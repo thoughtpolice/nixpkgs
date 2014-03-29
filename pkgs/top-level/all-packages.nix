@@ -7054,6 +7054,10 @@ let
 
   fleet = callPackage ../servers/fleet { };
 
+  foundationdb = callPackage ../servers/nosql/foundationdb/fdb.nix { };
+
+  foundationdb_sql = callPackage ../servers/nosql/foundationdb/sql-layer.nix { };
+
   freepops = callPackage ../servers/mail/freepops { };
 
   freeswitch = callPackage ../servers/sip/freeswitch { };
