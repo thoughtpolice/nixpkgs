@@ -105,6 +105,7 @@
   ./services/databases/couchdb.nix
   ./services/databases/firebird.nix
   ./services/databases/influxdb.nix
+  ./services/databases/foundationdb.nix
   ./services/databases/memcached.nix
   ./services/databases/monetdb.nix
   ./services/databases/mongodb.nix
