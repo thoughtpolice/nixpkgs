@@ -9775,6 +9775,8 @@ let
 
   springLobby = callPackage ../games/spring/springlobby.nix { };
 
+  starbound-server = callPackage ../games/starbound-server { };
+
   stardust = callPackage ../games/stardust {};
 
   steam = callPackage_i686 ../games/steam {};
