@@ -12,6 +12,7 @@ let
   applewmproto = (stdenv.mkDerivation ((if overrides ? applewmproto then overrides.applewmproto else x: x) {
     name = "applewmproto-1.4.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/applewmproto-1.4.2.tar.bz2;
       sha256 = "1zi4p07mp6jmk030p4gmglwxcwp0lzs5mi31y1b4rp8lsqxdxizw";
@@ -22,6 +23,7 @@ let
   bdftopcf = (stdenv.mkDerivation ((if overrides ? bdftopcf then overrides.bdftopcf else x: x) {
     name = "bdftopcf-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/app/bdftopcf-1.0.4.tar.bz2;
       sha256 = "1617zmgnx50n7vxlqyj84fl7vnk813jjqmi6jpigyz1xp9br1xga";
@@ -32,6 +34,7 @@ let
   bigreqsproto = (stdenv.mkDerivation ((if overrides ? bigreqsproto then overrides.bigreqsproto else x: x) {
     name = "bigreqsproto-1.1.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/bigreqsproto-1.1.2.tar.bz2;
       sha256 = "07hvfm84scz8zjw14riiln2v4w03jlhp756ypwhq27g48jmic8a6";
@@ -42,6 +45,7 @@ let
   compositeproto = (stdenv.mkDerivation ((if overrides ? compositeproto then overrides.compositeproto else x: x) {
     name = "compositeproto-0.4.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/compositeproto-0.4.2.tar.bz2;
       sha256 = "1z0crmf669hirw4s7972mmp8xig80kfndja9h559haqbpvq5k4q4";
@@ -52,6 +56,7 @@ let
   damageproto = (stdenv.mkDerivation ((if overrides ? damageproto then overrides.damageproto else x: x) {
     name = "damageproto-1.2.1";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/damageproto-1.2.1.tar.bz2;
       sha256 = "0nzwr5pv9hg7c21n995pdiv0zqhs91yz3r8rn3aska4ykcp12z2w";
@@ -62,6 +67,7 @@ let
   dmxproto = (stdenv.mkDerivation ((if overrides ? dmxproto then overrides.dmxproto else x: x) {
     name = "dmxproto-2.3.1";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/dmxproto-2.3.1.tar.bz2;
       sha256 = "02b5x9dkgajizm8dqyx2w6hmqx3v25l67mgf35nj6sz0lgk52877";
@@ -72,6 +78,7 @@ let
   dri2proto = (stdenv.mkDerivation ((if overrides ? dri2proto then overrides.dri2proto else x: x) {
     name = "dri2proto-2.8";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/proto/dri2proto-2.8.tar.bz2;
       sha256 = "015az1vfdqmil1yay5nlsmpf6cf7vcbpslxjb72cfkzlvrv59dgr";
@@ -82,6 +89,7 @@ let
   dri3proto = (stdenv.mkDerivation ((if overrides ? dri3proto then overrides.dri3proto else x: x) {
     name = "dri3proto-1.0";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/proto/dri3proto-1.0.tar.bz2;
       sha256 = "0x609xvnl8jky5m8jdklw4nymx3irkv32w99dfd8nl800bblkgh1";
@@ -92,6 +100,7 @@ let
   encodings = (stdenv.mkDerivation ((if overrides ? encodings then overrides.encodings else x: x) {
     name = "encodings-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/encodings-1.0.4.tar.bz2;
       sha256 = "0ffmaw80vmfwdgvdkp6495xgsqszb6s0iira5j0j6pd4i0lk3mnf";
@@ -102,6 +111,7 @@ let
   fixesproto = (stdenv.mkDerivation ((if overrides ? fixesproto then overrides.fixesproto else x: x) {
     name = "fixesproto-5.0";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/fixesproto-5.0.tar.bz2;
       sha256 = "1ki4wiq2iivx5g4w5ckzbjbap759kfqd72yg18m3zpbb4hqkybxs";
@@ -112,6 +122,7 @@ let
   fontadobe100dpi = (stdenv.mkDerivation ((if overrides ? fontadobe100dpi then overrides.fontadobe100dpi else x: x) {
     name = "font-adobe-100dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-adobe-100dpi-1.0.3.tar.bz2;
       sha256 = "0m60f5bd0caambrk8ksknb5dks7wzsg7g7xaf0j21jxmx8rq9h5j";
@@ -122,6 +133,7 @@ let
   fontadobe75dpi = (stdenv.mkDerivation ((if overrides ? fontadobe75dpi then overrides.fontadobe75dpi else x: x) {
     name = "font-adobe-75dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-adobe-75dpi-1.0.3.tar.bz2;
       sha256 = "02advcv9lyxpvrjv8bjh1b797lzg6jvhipclz49z8r8y98g4l0n6";
@@ -132,6 +144,7 @@ let
   fontadobeutopia100dpi = (stdenv.mkDerivation ((if overrides ? fontadobeutopia100dpi then overrides.fontadobeutopia100dpi else x: x) {
     name = "font-adobe-utopia-100dpi-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-adobe-utopia-100dpi-1.0.4.tar.bz2;
       sha256 = "19dd9znam1ah72jmdh7i6ny2ss2r6m21z9v0l43xvikw48zmwvyi";
@@ -142,6 +155,7 @@ let
   fontadobeutopia75dpi = (stdenv.mkDerivation ((if overrides ? fontadobeutopia75dpi then overrides.fontadobeutopia75dpi else x: x) {
     name = "font-adobe-utopia-75dpi-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-adobe-utopia-75dpi-1.0.4.tar.bz2;
       sha256 = "152wigpph5wvl4k9m3l4mchxxisgsnzlx033mn5iqrpkc6f72cl7";
@@ -152,6 +166,7 @@ let
   fontadobeutopiatype1 = (stdenv.mkDerivation ((if overrides ? fontadobeutopiatype1 then overrides.fontadobeutopiatype1 else x: x) {
     name = "font-adobe-utopia-type1-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-adobe-utopia-type1-1.0.4.tar.bz2;
       sha256 = "0xw0pdnzj5jljsbbhakc6q9ha2qnca1jr81zk7w70yl9bw83b54p";
@@ -162,6 +177,7 @@ let
   fontalias = (stdenv.mkDerivation ((if overrides ? fontalias then overrides.fontalias else x: x) {
     name = "font-alias-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-alias-1.0.3.tar.bz2;
       sha256 = "16ic8wfwwr3jicaml7b5a0sk6plcgc1kg84w02881yhwmqm3nicb";
@@ -172,6 +188,7 @@ let
   fontarabicmisc = (stdenv.mkDerivation ((if overrides ? fontarabicmisc then overrides.fontarabicmisc else x: x) {
     name = "font-arabic-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-arabic-misc-1.0.3.tar.bz2;
       sha256 = "1x246dfnxnmflzf0qzy62k8jdpkb6jkgspcjgbk8jcq9lw99npah";
@@ -182,6 +199,7 @@ let
   fontbh100dpi = (stdenv.mkDerivation ((if overrides ? fontbh100dpi then overrides.fontbh100dpi else x: x) {
     name = "font-bh-100dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bh-100dpi-1.0.3.tar.bz2;
       sha256 = "10cl4gm38dw68jzln99ijix730y7cbx8np096gmpjjwff1i73h13";
@@ -192,6 +210,7 @@ let
   fontbh75dpi = (stdenv.mkDerivation ((if overrides ? fontbh75dpi then overrides.fontbh75dpi else x: x) {
     name = "font-bh-75dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bh-75dpi-1.0.3.tar.bz2;
       sha256 = "073jmhf0sr2j1l8da97pzsqj805f7mf9r2gy92j4diljmi8sm1il";
@@ -202,6 +221,7 @@ let
   fontbhlucidatypewriter100dpi = (stdenv.mkDerivation ((if overrides ? fontbhlucidatypewriter100dpi then overrides.fontbhlucidatypewriter100dpi else x: x) {
     name = "font-bh-lucidatypewriter-100dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bh-lucidatypewriter-100dpi-1.0.3.tar.bz2;
       sha256 = "1fqzckxdzjv4802iad2fdrkpaxl4w0hhs9lxlkyraq2kq9ik7a32";
@@ -212,6 +232,7 @@ let
   fontbhlucidatypewriter75dpi = (stdenv.mkDerivation ((if overrides ? fontbhlucidatypewriter75dpi then overrides.fontbhlucidatypewriter75dpi else x: x) {
     name = "font-bh-lucidatypewriter-75dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bh-lucidatypewriter-75dpi-1.0.3.tar.bz2;
       sha256 = "0cfbxdp5m12cm7jsh3my0lym9328cgm7fa9faz2hqj05wbxnmhaa";
@@ -222,6 +243,7 @@ let
   fontbhttf = (stdenv.mkDerivation ((if overrides ? fontbhttf then overrides.fontbhttf else x: x) {
     name = "font-bh-ttf-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bh-ttf-1.0.3.tar.bz2;
       sha256 = "0pyjmc0ha288d4i4j0si4dh3ncf3jiwwjljvddrb0k8v4xiyljqv";
@@ -232,6 +254,7 @@ let
   fontbhtype1 = (stdenv.mkDerivation ((if overrides ? fontbhtype1 then overrides.fontbhtype1 else x: x) {
     name = "font-bh-type1-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bh-type1-1.0.3.tar.bz2;
       sha256 = "1hb3iav089albp4sdgnlh50k47cdjif9p4axm0kkjvs8jyi5a53n";
@@ -242,6 +265,7 @@ let
   fontbitstream100dpi = (stdenv.mkDerivation ((if overrides ? fontbitstream100dpi then overrides.fontbitstream100dpi else x: x) {
     name = "font-bitstream-100dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bitstream-100dpi-1.0.3.tar.bz2;
       sha256 = "1kmn9jbck3vghz6rj3bhc3h0w6gh0qiaqm90cjkqsz1x9r2dgq7b";
@@ -252,6 +276,7 @@ let
   fontbitstream75dpi = (stdenv.mkDerivation ((if overrides ? fontbitstream75dpi then overrides.fontbitstream75dpi else x: x) {
     name = "font-bitstream-75dpi-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bitstream-75dpi-1.0.3.tar.bz2;
       sha256 = "13plbifkvfvdfym6gjbgy9wx2xbdxi9hfrl1k22xayy02135wgxs";
@@ -262,6 +287,7 @@ let
   fontbitstreamtype1 = (stdenv.mkDerivation ((if overrides ? fontbitstreamtype1 then overrides.fontbitstreamtype1 else x: x) {
     name = "font-bitstream-type1-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-bitstream-type1-1.0.3.tar.bz2;
       sha256 = "1256z0jhcf5gbh1d03593qdwnag708rxqa032izmfb5dmmlhbsn6";
@@ -272,6 +298,7 @@ let
   fontcronyxcyrillic = (stdenv.mkDerivation ((if overrides ? fontcronyxcyrillic then overrides.fontcronyxcyrillic else x: x) {
     name = "font-cronyx-cyrillic-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-cronyx-cyrillic-1.0.3.tar.bz2;
       sha256 = "0ai1v4n61k8j9x2a1knvfbl2xjxk3xxmqaq3p9vpqrspc69k31kf";
@@ -282,6 +309,7 @@ let
   fontcursormisc = (stdenv.mkDerivation ((if overrides ? fontcursormisc then overrides.fontcursormisc else x: x) {
     name = "font-cursor-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-cursor-misc-1.0.3.tar.bz2;
       sha256 = "0dd6vfiagjc4zmvlskrbjz85jfqhf060cpys8j0y1qpcbsrkwdhp";
@@ -292,6 +320,7 @@ let
   fontdaewoomisc = (stdenv.mkDerivation ((if overrides ? fontdaewoomisc then overrides.fontdaewoomisc else x: x) {
     name = "font-daewoo-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-daewoo-misc-1.0.3.tar.bz2;
       sha256 = "1s2bbhizzgbbbn5wqs3vw53n619cclxksljvm759h9p1prqdwrdw";
@@ -302,6 +331,7 @@ let
   fontdecmisc = (stdenv.mkDerivation ((if overrides ? fontdecmisc then overrides.fontdecmisc else x: x) {
     name = "font-dec-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-dec-misc-1.0.3.tar.bz2;
       sha256 = "0yzza0l4zwyy7accr1s8ab7fjqkpwggqydbm2vc19scdby5xz7g1";
@@ -312,6 +342,7 @@ let
   fontibmtype1 = (stdenv.mkDerivation ((if overrides ? fontibmtype1 then overrides.fontibmtype1 else x: x) {
     name = "font-ibm-type1-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-ibm-type1-1.0.3.tar.bz2;
       sha256 = "1pyjll4adch3z5cg663s6vhi02k8m6488f0mrasg81ssvg9jinzx";
@@ -322,6 +353,7 @@ let
   fontisasmisc = (stdenv.mkDerivation ((if overrides ? fontisasmisc then overrides.fontisasmisc else x: x) {
     name = "font-isas-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-isas-misc-1.0.3.tar.bz2;
       sha256 = "0rx8q02rkx673a7skkpnvfkg28i8gmqzgf25s9yi0lar915sn92q";
@@ -332,6 +364,7 @@ let
   fontjismisc = (stdenv.mkDerivation ((if overrides ? fontjismisc then overrides.fontjismisc else x: x) {
     name = "font-jis-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-jis-misc-1.0.3.tar.bz2;
       sha256 = "0rdc3xdz12pnv951538q6wilx8mrdndpkphpbblszsv7nc8cw61b";
@@ -342,6 +375,7 @@ let
   fontmicromisc = (stdenv.mkDerivation ((if overrides ? fontmicromisc then overrides.fontmicromisc else x: x) {
     name = "font-micro-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-micro-misc-1.0.3.tar.bz2;
       sha256 = "1dldxlh54zq1yzfnrh83j5vm0k4ijprrs5yl18gm3n9j1z0q2cws";
@@ -352,6 +386,7 @@ let
   fontmisccyrillic = (stdenv.mkDerivation ((if overrides ? fontmisccyrillic then overrides.fontmisccyrillic else x: x) {
     name = "font-misc-cyrillic-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-misc-cyrillic-1.0.3.tar.bz2;
       sha256 = "0q2ybxs8wvylvw95j6x9i800rismsmx4b587alwbfqiw6biy63z4";
@@ -362,6 +397,7 @@ let
   fontmiscethiopic = (stdenv.mkDerivation ((if overrides ? fontmiscethiopic then overrides.fontmiscethiopic else x: x) {
     name = "font-misc-ethiopic-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-misc-ethiopic-1.0.3.tar.bz2;
       sha256 = "19cq7iq0pfad0nc2v28n681fdq3fcw1l1hzaq0wpkgpx7bc1zjsk";
@@ -372,6 +408,7 @@ let
   fontmiscmeltho = (stdenv.mkDerivation ((if overrides ? fontmiscmeltho then overrides.fontmiscmeltho else x: x) {
     name = "font-misc-meltho-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-misc-meltho-1.0.3.tar.bz2;
       sha256 = "148793fqwzrc3bmh2vlw5fdiwjc2n7vs25cic35gfp452czk489p";
@@ -382,6 +419,7 @@ let
   fontmiscmisc = (stdenv.mkDerivation ((if overrides ? fontmiscmisc then overrides.fontmiscmisc else x: x) {
     name = "font-misc-misc-1.1.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-misc-misc-1.1.2.tar.bz2;
       sha256 = "150pq6n8n984fah34n3k133kggn9v0c5k07igv29sxp1wi07krxq";
@@ -392,6 +430,7 @@ let
   fontmuttmisc = (stdenv.mkDerivation ((if overrides ? fontmuttmisc then overrides.fontmuttmisc else x: x) {
     name = "font-mutt-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-mutt-misc-1.0.3.tar.bz2;
       sha256 = "13qghgr1zzpv64m0p42195k1kc77pksiv059fdvijz1n6kdplpxx";
@@ -402,6 +441,7 @@ let
   fontschumachermisc = (stdenv.mkDerivation ((if overrides ? fontschumachermisc then overrides.fontschumachermisc else x: x) {
     name = "font-schumacher-misc-1.1.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-schumacher-misc-1.1.2.tar.bz2;
       sha256 = "0nkym3n48b4v36y4s927bbkjnsmicajarnf6vlp7wxp0as304i74";
@@ -412,6 +452,7 @@ let
   fontscreencyrillic = (stdenv.mkDerivation ((if overrides ? fontscreencyrillic then overrides.fontscreencyrillic else x: x) {
     name = "font-screen-cyrillic-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-screen-cyrillic-1.0.4.tar.bz2;
       sha256 = "0yayf1qlv7irf58nngddz2f1q04qkpr5jwp4aja2j5gyvzl32hl2";
@@ -422,6 +463,7 @@ let
   fontsonymisc = (stdenv.mkDerivation ((if overrides ? fontsonymisc then overrides.fontsonymisc else x: x) {
     name = "font-sony-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-sony-misc-1.0.3.tar.bz2;
       sha256 = "1xfgcx4gsgik5mkgkca31fj3w72jw9iw76qyrajrsz1lp8ka6hr0";
@@ -432,6 +474,7 @@ let
   fontsproto = (stdenv.mkDerivation ((if overrides ? fontsproto then overrides.fontsproto else x: x) {
     name = "fontsproto-2.1.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/fontsproto-2.1.2.tar.bz2;
       sha256 = "1ab8mbqxdwvdz4k5x4xb9c4n5w7i1xw276cbpk4z7a1nlpjrg746";
@@ -442,6 +485,7 @@ let
   fontsunmisc = (stdenv.mkDerivation ((if overrides ? fontsunmisc then overrides.fontsunmisc else x: x) {
     name = "font-sun-misc-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-sun-misc-1.0.3.tar.bz2;
       sha256 = "1q6jcqrffg9q5f5raivzwx9ffvf7r11g6g0b125na1bhpz5ly7s8";
@@ -452,6 +496,7 @@ let
   fontutil = (stdenv.mkDerivation ((if overrides ? fontutil then overrides.fontutil else x: x) {
     name = "font-util-1.3.0";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-util-1.3.0.tar.bz2;
       sha256 = "15cijajwhjzpy3ydc817zz8x5z4gbkyv3fps687jbq544mbfbafz";
@@ -462,6 +507,7 @@ let
   fontwinitzkicyrillic = (stdenv.mkDerivation ((if overrides ? fontwinitzkicyrillic then overrides.fontwinitzkicyrillic else x: x) {
     name = "font-winitzki-cyrillic-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-winitzki-cyrillic-1.0.3.tar.bz2;
       sha256 = "181n1bgq8vxfxqicmy1jpm1hnr6gwn1kdhl6hr4frjigs1ikpldb";
@@ -472,6 +518,7 @@ let
   fontxfree86type1 = (stdenv.mkDerivation ((if overrides ? fontxfree86type1 then overrides.fontxfree86type1 else x: x) {
     name = "font-xfree86-type1-1.0.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/font-xfree86-type1-1.0.4.tar.bz2;
       sha256 = "0jp3zc0qfdaqfkgzrb44vi9vi0a8ygb35wp082yz7rvvxhmg9sya";
@@ -482,6 +529,7 @@ let
   gccmakedep = (stdenv.mkDerivation ((if overrides ? gccmakedep then overrides.gccmakedep else x: x) {
     name = "gccmakedep-1.0.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/util/gccmakedep-1.0.3.tar.bz2;
       sha256 = "1r1fpy5ni8chbgx7j5sz0008fpb6vbazpy1nifgdhgijyzqxqxdj";
@@ -492,6 +540,7 @@ let
   glamoregl = (stdenv.mkDerivation ((if overrides ? glamoregl then overrides.glamoregl else x: x) {
     name = "glamor-egl-0.6.0";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/driver/glamor-egl-0.6.0.tar.bz2;
       sha256 = "1jg5clihklb9drh1jd7nhhdsszla6nv7xmbvm8yvakh5wrb1nlv6";
@@ -502,6 +551,7 @@ let
   glproto = (stdenv.mkDerivation ((if overrides ? glproto then overrides.glproto else x: x) {
     name = "glproto-1.4.17";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/proto/glproto-1.4.17.tar.bz2;
       sha256 = "0h5ykmcddwid5qj6sbrszgkcypwn3mslvswxpgy2n2iixnyr9amd";
@@ -512,6 +562,7 @@ let
   iceauth = (stdenv.mkDerivation ((if overrides ? iceauth then overrides.iceauth else x: x) {
     name = "iceauth-1.0.6";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/app/iceauth-1.0.6.tar.bz2;
       sha256 = "1x72y99dxf2fxnlyf0yrf9yzd8xzimxshy6l8mprwhrv6lvhi6dx";
@@ -522,6 +573,7 @@ let
   imake = (stdenv.mkDerivation ((if overrides ? imake then overrides.imake else x: x) {
     name = "imake-1.0.7";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/util/imake-1.0.7.tar.bz2;
       sha256 = "0zpk8p044jh14bis838shbf4100bjg7mccd7bq54glpsq552q339";
@@ -532,6 +584,7 @@ let
   inputproto = (stdenv.mkDerivation ((if overrides ? inputproto then overrides.inputproto else x: x) {
     name = "inputproto-2.3";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/proto/inputproto-2.3.tar.bz2;
       sha256 = "0by3aa8i1gki6i904i34vlrymv5p8il05gr83sf8x7v9ys9v29kx";
@@ -542,6 +595,7 @@ let
   kbproto = (stdenv.mkDerivation ((if overrides ? kbproto then overrides.kbproto else x: x) {
     name = "kbproto-1.0.6";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/kbproto-1.0.6.tar.bz2;
       sha256 = "0yal11hhpiisy3w8wmacsdzzzcnc3xwnswxz8k7zri40xc5aqz03";
@@ -552,6 +606,7 @@ let
   libAppleWM = (stdenv.mkDerivation ((if overrides ? libAppleWM then overrides.libAppleWM else x: x) {
     name = "libAppleWM-1.4.1";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/libAppleWM-1.4.1.tar.bz2;
       sha256 = "0r8x28n45q89x91mz8mv0zkkcxi8wazkac886fyvflhiv2y8ap2y";
@@ -562,6 +617,7 @@ let
   libFS = (stdenv.mkDerivation ((if overrides ? libFS then overrides.libFS else x: x) {
     name = "libFS-1.0.6";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libFS-1.0.6.tar.bz2;
       sha256 = "1mxfsvj9m3pn8cdkcn4kg190zp665mf4pv0083g6xykvsgxzq1wh";
@@ -572,6 +628,7 @@ let
   libICE = (stdenv.mkDerivation ((if overrides ? libICE then overrides.libICE else x: x) {
     name = "libICE-1.0.8";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/libICE-1.0.8.tar.bz2;
       sha256 = "07mp13pb3s73kj7y490gnx619znzwk91mlf8kdw0rzq29ll93a94";
@@ -582,6 +639,7 @@ let
   libSM = (stdenv.mkDerivation ((if overrides ? libSM then overrides.libSM else x: x) {
     name = "libSM-1.2.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libSM-1.2.2.tar.bz2;
       sha256 = "1gc7wavgs435g9qkp9jw4lhmaiq6ip9llv49f054ad6ryp4sib0b";
@@ -592,6 +650,7 @@ let
   libWindowsWM = (stdenv.mkDerivation ((if overrides ? libWindowsWM then overrides.libWindowsWM else x: x) {
     name = "libWindowsWM-1.0.1";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/libWindowsWM-1.0.1.tar.bz2;
       sha256 = "1p0flwb67xawyv6yhri9w17m1i4lji5qnd0gq8v1vsfb8zw7rw15";
@@ -602,6 +661,7 @@ let
   libX11 = (stdenv.mkDerivation ((if overrides ? libX11 then overrides.libX11 else x: x) {
     name = "libX11-1.6.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libX11-1.6.2.tar.bz2;
       sha256 = "05mx0s0vqzds3qjc1gmjr2s6x2ll37z4lfhgm7p2w7936zl2g81a";
@@ -612,6 +672,7 @@ let
   libXScrnSaver = (stdenv.mkDerivation ((if overrides ? libXScrnSaver then overrides.libXScrnSaver else x: x) {
     name = "libXScrnSaver-1.2.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/libXScrnSaver-1.2.2.tar.bz2;
       sha256 = "07ff4r20nkkrj7h08f9fwamds9b3imj8jz5iz6y38zqw6jkyzwcg";
@@ -622,6 +683,7 @@ let
   libXau = (stdenv.mkDerivation ((if overrides ? libXau then overrides.libXau else x: x) {
     name = "libXau-1.0.8";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXau-1.0.8.tar.bz2;
       sha256 = "1wm4pv12f36cwzhldpp7vy3lhm3xdcnp4f184xkxsp7b18r7gm7x";
@@ -632,6 +694,7 @@ let
   libXaw = (stdenv.mkDerivation ((if overrides ? libXaw then overrides.libXaw else x: x) {
     name = "libXaw-1.0.12";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXaw-1.0.12.tar.bz2;
       sha256 = "1xnv7jy86j9vhmw74frkzcraynqbw1p1s79jasargsgwfi433z4n";
@@ -642,6 +705,7 @@ let
   libXcomposite = (stdenv.mkDerivation ((if overrides ? libXcomposite then overrides.libXcomposite else x: x) {
     name = "libXcomposite-0.4.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXcomposite-0.4.4.tar.bz2;
       sha256 = "0y21nfpa5s8qmx0srdlilyndas3sgl0c6rc26d5fx2vx436m1qpd";
@@ -652,6 +716,7 @@ let
   libXcursor = (stdenv.mkDerivation ((if overrides ? libXcursor then overrides.libXcursor else x: x) {
     name = "libXcursor-1.1.14";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXcursor-1.1.14.tar.bz2;
       sha256 = "1prkdicl5y5yx32h1azh6gjfbijvjp415javv8dsakd13jrarilv";
@@ -662,6 +727,7 @@ let
   libXdamage = (stdenv.mkDerivation ((if overrides ? libXdamage then overrides.libXdamage else x: x) {
     name = "libXdamage-1.1.4";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXdamage-1.1.4.tar.bz2;
       sha256 = "1bamagq7g6s0d23l8rb3nppj8ifqj05f7z9bhbs4fdg8az3ffgvw";
@@ -672,6 +738,7 @@ let
   libXdmcp = (stdenv.mkDerivation ((if overrides ? libXdmcp then overrides.libXdmcp else x: x) {
     name = "libXdmcp-1.1.1";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/X11R7.7/src/everything/libXdmcp-1.1.1.tar.bz2;
       sha256 = "13highx4xpgkiwykpcl7z2laslrjc4pzi4h617ny9p7r6116vkls";
@@ -682,6 +749,7 @@ let
   libXext = (stdenv.mkDerivation ((if overrides ? libXext then overrides.libXext else x: x) {
     name = "libXext-1.3.2";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXext-1.3.2.tar.bz2;
       sha256 = "1q1j0kjyhmy24wqr6mdkrrciffyqhmc8vn95za2w1ka6qrdhfagq";
@@ -692,6 +760,7 @@ let
   libXfixes = (stdenv.mkDerivation ((if overrides ? libXfixes then overrides.libXfixes else x: x) {
     name = "libXfixes-5.0.1";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXfixes-5.0.1.tar.bz2;
       sha256 = "0rs7qgzr6dpr62db7sd91c1b47hzhzfr010qwnpcm8sg122w1gk3";
@@ -702,6 +771,7 @@ let
   libXfont = (stdenv.mkDerivation ((if overrides ? libXfont then overrides.libXfont else x: x) {
     name = "libXfont-1.4.8";
     builder = ./builder.sh;
+    useFakeTime = 1;
     src = fetchurl {
       url = mirror://xorg/individual/lib/libXfont-1.4.8.tar.bz2;
       sha256 = "01fh2hnnaby8x6mv57x78nsqwhls70gwykldzd8b43vrpzzd8s2m";
