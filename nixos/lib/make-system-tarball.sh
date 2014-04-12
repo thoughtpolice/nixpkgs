@@ -50,7 +50,9 @@ done
 
 ensureDir $out/tarball
 
-tar cvJf $out/tarball/$fileName.tar.xz *
+rm ./env-vars
+
+find * ! -type d -print0 | sort -z | tar -cv --mtime='1970-01-01' -T- --null -f- | xz -c > $out/tarball/$fileName.tar.xz
 
 ensureDir $out/nix-support
 echo $system > $out/nix-support/system
