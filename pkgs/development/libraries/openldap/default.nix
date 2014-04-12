@@ -15,8 +15,6 @@ stdenv.mkDerivation rec {
     ] ++ stdenv.lib.optional (openssl == null) "--without-tls"
       ++ stdenv.lib.optional (cyrus_sasl == null) "--without-cyrus-sasl";
 
-  dontPatchELF = 1; # !!!
-
   meta = {
     homepage = "http://www.openldap.org/";
     description = "An open source implementation of the Lightweight Directory Access Protocol";
