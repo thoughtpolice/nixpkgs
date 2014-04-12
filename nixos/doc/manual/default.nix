@@ -43,7 +43,7 @@ in rec {
 
     sources = sourceFilesBySuffices ./. [".xml"];
 
-    buildInputs = [ pkgs.libxml2 pkgs.libxslt ];
+    buildInputs = [ pkgs.libxml2 pkgs.libxslt pkgs.perl ];
 
     xsltFlags = ''
       --param section.autolabel 1
@@ -72,6 +72,21 @@ in rec {
         --output $dst/manual.html \
         ${pkgs.docbook5_xsl}/xml/xsl/docbook/xhtml/docbook.xsl \
         ./manual.xml
+
+      # Fix the non-deterministic id-generation used by xsltproc
+      # !!! Move this somewhere else
+      perl -0777 -pi -e '
+          # xsltproc html output id remapping
+          # pretty weird that xsltproc cannot do this
+          # Author: Alexander Kjeldaas <ak@formalprivacy.com>
+          my @parts = split(/(href="#|id="|href="#ftn.|id="ftn.)(id.\d+")/g, $_);
+          my %remap = {};
+          for (my $i = 0; $i < @parts; $i += 3) {
+              my $id = @parts[ $i+2 ];
+              $remap{$id} = $i unless exists $remap{$id};
+              @parts[ $i+2 ] = "idp$remap{$id}\"";
+          }
+          $_ = join "", @parts; ' $dst/manual.html
 
       mkdir -p $dst/images/callouts
       cp ${pkgs.docbook5_xsl}/xml/xsl/docbook/images/callouts/*.gif $dst/images/callouts/
