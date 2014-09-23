@@ -166,6 +166,7 @@
   ./services/misc/felix.nix
   ./services/misc/folding-at-home.nix
   ./services/misc/gitolite.nix
+  ./services/misc/glusterfs.nix
   ./services/misc/gpsd.nix
   ./services/misc/mesos-master.nix
   ./services/misc/mesos-slave.nix
