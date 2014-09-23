@@ -1,65 +1,41 @@
-{ stdenv, fetchurl, which, zlib, pkgconfig, SDL, openssl
-, libuuid, gettext, ncurses, dev86, iasl, pciutils, bzip2, xz
-, lvm2, utillinux, procps, texinfo, perl, pythonPackages }:
+{ stdenv, fetchurl, which, zlib, pkgconfig, SDL, openssl, libaio
+, libuuid, gettext, ncurses, dev86, iasl, pciutils, bzip2, xz, yajl
+, lvm2, utillinux, procps, texinfo, perl, pythonPackages, glib, wget
+, fetchgit }:
 
 with stdenv.lib;
 
 let
-
-  version = "4.0.3";
-
   libDir = if stdenv.is64bit then "lib64" else "lib";
 
-  # Sources needed to build the stubdoms.
-
-  stubdomSrcs =
-    [ { url = http://xenbits.xensource.com/xen-extfiles/lwip-1.3.0.tar.gz;
-        sha256 = "13wlr85s1hnvia6a698qpryyy12lvmqw0a05xmjnd0h71ralsbkp";
-      }
-      { url = http://xenbits.xensource.com/xen-extfiles/zlib-1.2.3.tar.gz;
-        sha256 = "0pmh8kifb6sfkqfxc23wqp3f2wzk69sl80yz7w8p8cd4cz8cg58p";
-      }
-      { url = http://xenbits.xensource.com/xen-extfiles/newlib-1.16.0.tar.gz;
-        sha256 = "01rxk9js833mwadq92jx0flvk9jyjrnwrq93j39c2j2wjsa66hnv";
-      }
-      { url = http://xenbits.xensource.com/xen-extfiles/grub-0.97.tar.gz;
-        sha256 = "02r6b52r0nsp6ryqfiqchnl7r1d9smm80sqx24494gmx5p8ia7af";
-      }
-      { url = http://xenbits.xensource.com/xen-extfiles/pciutils-2.2.9.tar.bz2;
-        sha256 = "092v4q478i1gc7f3s2wz6p4xlf1wb4gs5shbkn21vnnmzcffc2pn";
-      }
-    ];
-
+  seabiosSrc =
+    [ { url    = "git://xenbits.xen.org/seabios.git";
+        rev    = "refs/tags/rel-1.7.3.1";
+        sha256 = "a50a5ab6d992f5598edd92105059fae9acfc192981e08bd88534c2167e92526a";
+      } ];
 in
-
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   name = "xen-${version}";
+  version = "4.4.1";
 
   src = fetchurl {
     url = "http://bits.xensource.com/oss-xen/release/${version}/xen-${version}.tar.gz";
-    sha256 = "0p4i7mm8cdsr8i9z3dij6nriyvz6la2rhm7jkyk2n8h62nnxi1b5";
+    sha256 = "09gaqydqmy64s5pqnwgjyzhd3wc61xyghpqjfl97kmvm8ly9vd2m";
   };
 
-  patches =
-    [ # Xen looks for headers in /usr/include and for libraries using
-      # ldconfig.  Don't do that.
-      ./has-header.patch
-
-      # GCC 4.5 compatibility.
-      ./gcc-4.5.patch
-    ];
-
   buildInputs =
-    [ which zlib pkgconfig SDL openssl libuuid gettext ncurses
-      dev86 iasl pciutils bzip2 xz texinfo perl
+    [ which zlib pkgconfig SDL openssl libuuid gettext ncurses yajl
+      dev86 iasl pciutils bzip2 xz texinfo perl glib wget libaio
       pythonPackages.python pythonPackages.wrapPython
     ];
 
   pythonPath = [ pythonPackages.curses ];
 
+  configureFlags = "--disable-stubdom";
+
   makeFlags = "PREFIX=$(out) CONFIG_DIR=/etc";
 
-  buildFlags = "xen tools stubdom";
+  buildFlags = "xen tools";
 
   preBuild =
     ''
@@ -79,13 +55,13 @@ stdenv.mkDerivation {
       substituteInPlace tools/xenstat/Makefile \
         --replace /usr/include/curses.h ${ncurses}/include/curses.h
 
-      substituteInPlace tools/ioemu-qemu-xen/xen-hooks.mak \
+      substituteInPlace tools/qemu-xen-traditional/xen-hooks.mak \
         --replace /usr/include/pci ${pciutils}/include/pci
 
       # Work around a bug in our GCC wrapper: `gcc -MF foo -v' doesn't
       # print the GCC version number properly.
       substituteInPlace xen/Makefile \
-        --replace '$(CC) $(CFLAGS) -v' '$(CC) -v'
+        --replace '$(CC) $(CFLAGS) --version' '$(CC) --version'
 
       substituteInPlace tools/python/xen/xend/server/BlktapController.py \
         --replace /usr/sbin/tapdisk2 $out/sbin/tapdisk2
@@ -104,23 +80,9 @@ stdenv.mkDerivation {
       substituteInPlace tools/hotplug/Linux/init.d/xendomains \
         --replace 'XENDOM_CONFIG=/etc/sysconfig/xendomains' "" \
         --replace /bin/ls ls
-
-      # Xen's stubdoms need various sources that it usually fetches at
-      # build time using wget.  We can't have that.
-      ${flip concatMapStrings stubdomSrcs (x: let src = fetchurl x; in ''
-        cp ${src} stubdom/${src.name}
-      '')}
-
-      # Hack to get `gcc -m32' to work without having 32-bit Glibc headers.
-      mkdir -p tools/include/gnu
-      touch tools/include/gnu/stubs-32.h
     '';
 
-  postBuild =
-    ''
-      make -C docs man-pages
-    '';
-
+  postBuild = "make -C docs man-pages";
   installPhase =
     ''
       mkdir -p $out
@@ -135,7 +97,6 @@ stdenv.mkDerivation {
     homepage = http://www.xen.org/;
     description = "Xen hypervisor and management tools for Dom0";
     platforms = [ "i686-linux" "x86_64-linux" ];
-    maintainers = [ stdenv.lib.maintainers.eelco ];
-    broken = true;
+    maintainers = with stdenv.lib.maintainers; [ eelco thoughtpolice ];
   };
 }
