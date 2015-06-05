@@ -24,6 +24,11 @@ let
 
     clang = wrapCC self.clang-unwrapped;
 
+    clang-analyzer = callPackage ./clang/analyzer.nix {
+      clang = self.clang;
+      clang-unwrapped = self.clang-unwrapped;
+    };
+
     stdenv = overrideCC stdenv self.clang;
 
     lldb = callPackage ./lldb.nix {};
