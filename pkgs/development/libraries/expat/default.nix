@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
 
   outputMan = "dev"; # tiny page for a dev tool
 
-  doCheck = true;
+  doCheck = ! stdenv ? cross;
 
   preCheck = ''
     patchShebangs ./run.sh
