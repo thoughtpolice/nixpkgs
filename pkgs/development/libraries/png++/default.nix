@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     sha256 = "14c74fsc3q8iawf60m74xkkawkqbhd8k8x315m06qaqjcl2nmg5b";
   };
 
-  doCheck = true;
+  doCheck = ! stdenv ? cross;
   checkTarget = "test";
   preCheck = ''
     patchShebangs test/test.sh
@@ -21,8 +21,7 @@ stdenv.mkDerivation rec {
 
   postCheck = "cat test/test.log";
 
-  buildInputs = [ ]
-    ++ stdenv.lib.optional docSupport doxygen;
+  nativeBuildInputs = stdenv.lib.optional docSupport doxygen;
 
   propagatedBuildInputs = [ libpng ];
 
