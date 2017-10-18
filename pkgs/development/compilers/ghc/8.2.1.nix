@@ -32,7 +32,8 @@ in stdenv.mkDerivation (rec {
 
   postPatch = "patchShebangs .";
 
-  patches = [ ./ghc-gold-linker.patch ];
+  patches = [ ./ghc-gold-linker.patch
+              ./shadowed-deps.patch ];
 
   preConfigure = commonPreConfigure;
 
