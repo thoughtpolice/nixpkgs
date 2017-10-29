@@ -1,5 +1,6 @@
 { stdenv, fetchurl, icu, expat, zlib, bzip2, python, fixDarwinDylibNames, libiconv
-, buildPlatform, hostPlatform
+, which
+, buildPackages, buildPlatform, hostPlatform
 , toolset ? if stdenv.cc.isClang then "clang" else null
 , enableRelease ? true
 , enableDebug ? false
@@ -20,6 +21,13 @@
 
 # We must build at least one type of libraries
 assert enableShared || enableStatic;
+
+# Python isn't supported when cross-compiling
+assert enablePython -> hostPlatform == buildPlatform;
+assert enableNumpy -> enablePython;
+
+# If cross-compiling we need to set the toolset ourselves
+assert (buildPlatform != hostPlatform) -> toolset == null;
 
 with stdenv.lib;
 let
@@ -114,7 +122,13 @@ stdenv.mkDerivation {
     EOF
   '' + optionalString (hostPlatform != buildPlatform) ''
     cat << EOF > user-config.jam
-    using gcc : cross : ${stdenv.cc.prefix}c++ ;
+    using gcc : cross : ${stdenv.cc.prefix}g++ ;
+    EOF
+  '';
+
+  postConfigure = optionalString (hostPlatform != buildPlatform) ''
+    cat << EOF > project-config.jam
+    using gcc : cross : ${stdenv.cc.prefix}g++ ;
     EOF
   '';
 
@@ -123,6 +137,7 @@ stdenv.mkDerivation {
 
   enableParallelBuilding = true;
 
+  nativeBuildInputs = [ which buildPackages.stdenv.cc ];
   buildInputs = [ expat zlib bzip2 libiconv ]
     ++ stdenv.lib.optionals (hostPlatform == buildPlatform) [ python icu ]
     ++ stdenv.lib.optional stdenv.isDarwin fixDarwinDylibNames;
@@ -138,7 +153,6 @@ stdenv.mkDerivation {
       "--with-python=${python.interpreter}"
     ] else [
       "--without-icu"
-      "--without-python"
     ]);
 
   buildPhase = ''
