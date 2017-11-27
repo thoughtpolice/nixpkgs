@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "1s1kpf9hpyq6bdf87nhlkxyr2ay0ip9wqicdma9h8yz4vs20r2hs";
   };
 
-  buildInputs = [ unzip ];
+  nativeBuildInputs = [ unzip ];
 
   outputs = [ "out" "doc" ];
 
