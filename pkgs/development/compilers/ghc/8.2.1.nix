@@ -87,6 +87,7 @@ stdenv.mkDerivation rec {
 
   patches = [
     ./ghc-gold-linker.patch
+    ./recompute-abi-depends.patch
   ] ++ stdenv.lib.optionals (targetPlatform != hostPlatform) [
     ./D4008-backport.diff
     ./D4008-backport-rendered.diff
