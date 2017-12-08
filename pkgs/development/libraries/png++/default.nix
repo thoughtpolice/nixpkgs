@@ -1,5 +1,5 @@
-{ stdenv, fetchurl, libpng
-, docSupport ? true, doxygen ? null
+{ stdenv, fetchurl, zlib, libpng
+, docSupport ? false, doxygen ? null
 }:
 assert docSupport -> doxygen != null;
 
@@ -12,23 +12,13 @@ stdenv.mkDerivation rec {
     sha256 = "14c74fsc3q8iawf60m74xkkawkqbhd8k8x315m06qaqjcl2nmg5b";
   };
 
-  doCheck = ! stdenv ? cross;
-  checkTarget = "test";
-  preCheck = ''
-    patchShebangs test/test.sh
-    substituteInPlace test/test.sh --replace "exit 1" "exit 0"
-  '';
+  propagatedBuildInputs = [ zlib libpng ];
 
-  postCheck = "cat test/test.log";
-
-  nativeBuildInputs = stdenv.lib.optional docSupport doxygen;
-
-  propagatedBuildInputs = [ libpng ];
-
-  makeFlags = [ "PREFIX=\${out}" ]
-    ++ stdenv.lib.optional docSupport "docs";
-
+  doCheck = false;
   enableParallelBuilding = true;
+
+  makeFlags = [ "PREFIX=\${out}" ];
+  NIX_LDFLAGS="-lpng -lz";
 
   meta = with stdenv.lib; {
     homepage = http://www.nongnu.org/pngpp/;
