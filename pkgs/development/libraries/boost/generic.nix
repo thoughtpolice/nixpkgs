@@ -10,6 +10,8 @@
 , enableStatic ? !enableShared
 , enablePIC ? false
 , enableExceptions ? false
+, enablePython ? false
+, enableNumpy ? false
 , taggedLayout ? ((enableRelease && enableDebug) || (enableSingleThreaded && enableMultiThreaded) || (enableShared && enableStatic))
 , patches ? []
 , mpi ? null
