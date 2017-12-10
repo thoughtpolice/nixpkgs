@@ -30,7 +30,6 @@ buildPythonPackage rec {
   };
 
   NIX_CFLAGS_COMPILE = stdenv.lib.optionalString stdenv.isDarwin "-I${libcxx}/include/c++/v1";
-
   XDG_RUNTIME_DIR = "/tmp";
 
   buildInputs = [ python which sphinx stdenv ]
@@ -46,6 +45,8 @@ buildPythonPackage rec {
     ++ stdenv.lib.optionals enableTk [ tcl tk tkinter libX11 ]
     ++ stdenv.lib.optionals enableQt [ pyqt4 ]
     ++ stdenv.lib.optionals (builtins.hasAttr "isPy2" python) [ functools32 subprocess32 ];
+
+  CPLUS_INCLUDE_PATH = stdenv.lib.makeSearchPathOutput "dev" "include" [ libpng freetype ];
 
   patches =
     [ ./basedirlist.patch ] ++
