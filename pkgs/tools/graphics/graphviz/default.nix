@@ -44,7 +44,6 @@ stdenv.mkDerivation rec {
   # "command -v" is POSIX, "which" is not
   postInstall = stdenv.lib.optionalString (xorg != null) ''
     sed -i 's|`which lefty`|"'$out'/bin/lefty"|' $out/bin/dotty
-    sed -i 's|which|command -v|' $out/bin/vimdot
   '';
 
   meta = {
