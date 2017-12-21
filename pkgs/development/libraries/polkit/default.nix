@@ -1,5 +1,6 @@
 { stdenv, fetchurl, fetchpatch, autoreconfHook, pkgconfig, glib, expat, pam
-, intltool, spidermonkey_17 , gobjectIntrospection
+, intltool, spidermonkey_17 , gobjectIntrospection, libxslt, docbook_xsl
+, docbook_xml_dtd_412, gtk_doc
 , useSystemd ? stdenv.isLinux, systemd
 }:
 
@@ -41,7 +42,8 @@ stdenv.mkDerivation rec {
   outputs = [ "bin" "dev" "out" ]; # small man pages in $bin
 
   nativeBuildInputs =
-    [ pkgconfig autoreconfHook intltool gobjectIntrospection ];
+    [ gtk_doc pkgconfig autoreconfHook intltool gobjectIntrospection ]
+    ++ [ libxslt docbook_xsl docbook_xml_dtd_412 ]; # man pages
   buildInputs =
     [ glib expat pam spidermonkey_17 gobjectIntrospection ]
     ++ stdenv.lib.optional useSystemd systemd;
