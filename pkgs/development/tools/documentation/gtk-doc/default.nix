@@ -1,5 +1,5 @@
 { stdenv, fetchurl, pkgconfig, perl, python, libxml2Python, libxslt, which
-, docbook_xml_dtd_43, docbook_xsl, gnome_doc_utils, dblatex, gettext, itstool }:
+, docbook_xml_dtd_43, docbook_xsl, gnome_doc_utils, gettext, itstool }:
 
 stdenv.mkDerivation rec {
   name = "gtk-doc-${version}";
@@ -30,7 +30,7 @@ stdenv.mkDerivation rec {
 
   buildInputs =
    [ pkgconfig perl python libxml2Python libxslt docbook_xml_dtd_43 docbook_xsl
-     gnome_doc_utils dblatex gettext which itstool
+     gnome_doc_utils gettext which itstool
    ];
 
   meta = with stdenv.lib; {
