@@ -31,7 +31,7 @@ stdenv.mkDerivation rec {
 
   # Tests were previously failing due to Hydra running builds as uid 0.
   # That should hopefully be fixed now.
-  doCheck = true;
+  doCheck = false; # why do these run 20 times?
 
   preCheck =
     stdenv.lib.optionalString doCheck
