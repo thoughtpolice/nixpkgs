@@ -18,6 +18,12 @@ stdenv.mkDerivation rec {
     flex bison elfutils python pythonPackages.netaddr luajit netperf iperf openssl
   ];
 
+  # fix build impurity in the python install script
+  patchPhase = ''
+    substituteInPlace ./src/python/CMakeLists.txt \
+      --replace etc/debian_version foobar/does_not_exist
+  '';
+
   cmakeFlags="-DBCC_KERNEL_MODULES_DIR=${kernel.dev}/lib/modules -DBCC_KERNEL_HAS_SOURCE_DIR=1";
 
   postInstall = ''
