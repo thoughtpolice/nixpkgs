@@ -1,4 +1,4 @@
-{ stdenv, fetchurl }:
+{ stdenv, fetchurl, openssl }:
 
 stdenv.mkDerivation rec {
   name = "iperf-3.2";
@@ -8,6 +8,7 @@ stdenv.mkDerivation rec {
     sha256 = "07cwrl9q5pmfjlh6ilpk7hm25lpkcaf917zhpmfq918lhrpv61zj";
   };
 
+  buildInputs = [ openssl ];
   postInstall = ''
     ln -s iperf3 $out/bin/iperf
   '';
