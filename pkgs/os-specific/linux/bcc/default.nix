@@ -1,5 +1,7 @@
 { stdenv, fetchFromGitHub, makeWrapper, cmake, llvmPackages, kernel,
-  flex, bison, elfutils, python, pythonPackages, luajit, netperf, iperf }:
+  flex, bison, elfutils, python, pythonPackages, luajit, netperf, iperf,
+  openssl
+}:
 
 stdenv.mkDerivation rec {
   version = "0.3.0";
@@ -13,7 +15,7 @@ stdenv.mkDerivation rec {
   };
 
   buildInputs = [ makeWrapper cmake llvmPackages.llvm llvmPackages.clang-unwrapped kernel
-    flex bison elfutils python pythonPackages.netaddr luajit netperf iperf
+    flex bison elfutils python pythonPackages.netaddr luajit netperf iperf openssl
   ];
 
   cmakeFlags="-DBCC_KERNEL_MODULES_DIR=${kernel.dev}/lib/modules -DBCC_KERNEL_HAS_SOURCE_DIR=1";
