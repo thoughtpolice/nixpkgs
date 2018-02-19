@@ -15,10 +15,10 @@ stdenv.mkDerivation rec {
 
   outputs = [ "out" "man" "doc" ];
 
-  nativeBuildInputs = [ makeWrapper xorg.libXt ]
+  nativeBuildInputs = [ makeWrapper ]
     ++ optionals doCheck [ perlPackages.TestCommand perlPackages.TestHarness ];
 
-  buildInputs = [ xorg.libX11 xorg.libXinerama imlib2 libjpeg libpng curl libexif ];
+  buildInputs = [ xorg.libX11 xorg.libXinerama xorg.libXt imlib2 libjpeg libpng curl libexif ];
 
   preBuild = ''
     makeFlags="PREFIX=$out exif=1"
