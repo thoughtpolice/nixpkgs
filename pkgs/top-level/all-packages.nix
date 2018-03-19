@@ -12198,6 +12198,8 @@ with pkgs;
   cassandra_3_11 = callPackage ../servers/nosql/cassandra/3.11.nix { };
   cassandra = cassandra_3_11;
 
+  comdb2 = callPackage ../servers/sql/comdb2 { };
+
   apache-jena = callPackage ../servers/nosql/apache-jena/binary.nix {
     java = jdk;
   };
