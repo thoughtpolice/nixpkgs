@@ -1,0 +1,113 @@
+<chapter xmlns="http://docbook.org/ns/docbook"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         version="5.0"
+         xml:id="module-comdb2">
+
+<title>Comdb2</title>
+
+<!-- FIXME: render nicely -->
+
+<!-- FIXME: source can be added automatically -->
+<para><emphasis>Source:</emphasis> <filename>modules/services/databases/comdb2.nix</filename></para>
+
+<para><emphasis>Upstream documentation:</emphasis> <link xlink:href="https://bloomberg.github.io/comdb2/"/></para>
+
+<para>Comdb2 is free, highly available, clustering relational database,
+developed by <link xlink:href="https://www.bloomberg.com">Bloomberg</link>.
+Comdb2 favors large, available and consistent (CA) database deployment.
+Features include nearly automatic HA and transparent client failover, as well
+as unique features like stored lua procedures, support for large (255MB) blobs,
+and precise built-in decimal types.</para>
+
+<section><title>Configuring</title>
+
+<para>To enable Comdb2 tooling and services, add the following to your
+<filename>configuration.nix</filename> to enable the Comdb2 NixOS module:
+
+<programlisting>
+services.comdb2.enable = true;
+</programlisting>
+
+</para>
+
+<para>You are not required to specify a package version. Comdb2 is designed for
+high availability and has a highly stable on disk format that should seamlessly
+support new versions upon upgrade.</para>
+
+<para>Comdb2 uses a process-per-database model -- every individual database you
+have on your machine runs an independent <command>comdb2</command> process to
+manage it. Furthermore, by default, there are no databases on your machine
+(none are strictly needed), so enabling the services above is not enough (more
+on that below) to start using it.</para>
+
+<para>By default, the <command>comdb2pmux</command> and
+<command>comdb2sockpool</command> services are enabled when you enable the
+<command>comdb2</command> NixOS module. Because there is an individual process
+for each database, the <command>comdb2pmux</command> acts like a single lookup
+service allowing clients to get a socket to the database they need access to.
+Clients first ask the service for the location of the database, and it hands
+back a socket connected to the correct process.
+<command>comdb2sockpool</command> features an independent connection pool that
+can be used by Comdb2 clients. Both services are completely transparent to
+users of Comdb2 clients.</para>
+
+</section>
+
+<section><title>Managing databases</title>
+
+<para>By default, PostgreSQL stores its databases in
+<filename>/var/db/postgresql</filename>. You can override this using
+<option>services.postgresql.dataDir</option>, e.g.
+
+<programlisting>
+services.postgresql.dataDir = "/data/postgresql";
+</programlisting>
+
+<!--
+<para>After running <command>nixos-rebuild</command>, you can verify
+whether PostgreSQL works by running <command>psql</command>:
+
+<screen>
+$ psql
+psql (9.2.9)
+Type "help" for help.
+
+alice=>
+</screen>
+-->
+
+</para>
+
+</section>
+
+<section><title>Database storage</title>
+
+<para>By default, PostgreSQL stores its databases in
+<filename>/var/db/postgresql</filename>. You can override this using
+<option>services.postgresql.dataDir</option>, e.g.
+
+<programlisting>
+services.postgresql.dataDir = "/data/postgresql";
+</programlisting>
+
+</para>
+
+</section>
+
+
+<section><title>Upgrading</title>
+
+<para>FIXME: document dump/upgrade/load cycle.</para>
+
+</section>
+
+
+<section><title>Options</title>
+
+<para>FIXME: auto-generated list of module options.</para>
+
+</section>
+
+
+</chapter>
